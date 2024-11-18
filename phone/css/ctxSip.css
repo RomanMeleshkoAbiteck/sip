@@ -17,7 +17,7 @@
 #sipClient #sip-dialpad {
   width: 292px;
   padding: 36px 20px;
-  margin-top: 50px;
+  /*margin-top: 50px;*/
 }
 #sipClient #sip-dialpad .col-xs-4 {
   text-align: center;
@@ -157,6 +157,16 @@
   border-radius: 20px;
 }
 
+.dropdown-menu {
+  padding: 10px !important;
+  border: none !important;
+  margin: 10px 30px !important;
+}
+
+.dropdown-menu-right {
+  right: auto;
+}
+
 /*------------- Styles for block add Contact ------------------- */
 .saveNumberBlock {
   position: absolute;
@@ -269,7 +279,7 @@
 
 /*----------- Styles for Modal buffer --------------------------- */
 .modal-buffer {
-  top: -40px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
   padding: 10px 30px;
@@ -466,3 +476,10 @@
   }
 
 }
+
+/*@media (min-width: 415px) {*/
+/*  .dropdown-menu {*/
+/*    inset: 0px -150px auto auto !important;*/
+/*  }*/
+
+/*}*/

@@ -979,6 +979,8 @@ $(document).ready(function() {
                localStorage.setItem('contacts', JSON.stringify(contacts));
 
                displayContacts();
+               deleteContact();
+               copyTextBuffer();
            }
 
            $(saveBlock).hide();
