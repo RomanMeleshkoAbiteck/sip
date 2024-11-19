@@ -513,12 +513,20 @@ $(document).ready(function() {
                 $("#mdlError p").html(msg);
                 $("#mdlError").modal('show');
 
-                if (closable) {
+                // I set ! to if (!closable) Roman Meleshko
+                if (!closable) {
                     var b = '<button type="button" class="close" data-dismiss="modal">&times;</button>';
                     $("#mdlError .modal-header").find('button').remove();
                     $("#mdlError .modal-header").prepend(b);
                     $("#mdlError .modal-title").html(title);
                     $("#mdlError").modal({ keyboard : true });
+
+                    // Added new event while modal is open ( click on all page )
+                    $(".modal").on('click', function() {
+                        $(".modal").fadeOut(200);
+                        $(".modal-backdrop").fadeOut(200);
+                    });
+
                 } else {
                     $("#mdlError .modal-header").find('button').remove();
                     $("#mdlError .modal-title").html(title);
