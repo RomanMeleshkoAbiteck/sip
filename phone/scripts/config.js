@@ -1,28 +1,68 @@
-// var user = {
-//     //  User Name
-//     "User" : "1060",
-//     //  Password
-//     "Pass" : "1060",
-//     //  Auth Realm
-//     "Realm"   : "192.168.0.102",
-//     // Display Name
-//     "Display" : "1060",
-//     // WebSocket URL
-//     "WSServer"  : "ws://192.168.0.102:8088/ws"
-// };
+var user;
 
-var user = {
-    //  User Name
-    "User" : "1060",
-    //  Password
-    "Pass" : "1060",
-    //  Auth Realm
-    "Realm"   : "192.168.8.88",
-    // Display Name
-    "Display" : "1060",
-    // WebSocket URL
-    "WSServer"  : "wss://192.168.8.88:8088/wss"
-};
+function addScript() {
+
+     let i = '<script type="text/javascript" src="/phone/scripts/app.js" defer></script>'
+
+     $("body").append( i );
+
+}
 
 
+function setData() {
+    let content = $(".content");
+    let saveChanges = $(".saveChanges");
+    let modal_setting = $(".modal-setting");
+    let i;
 
+     user = JSON.parse(localStorage.getItem('userData'));
+
+     if (user) {
+          $(content).show();
+          $(modal_setting).hide();
+
+          i = '<script type="text/javascript" src="/phone/scripts/app.js" defer></script>'
+
+          $("body").append( i );
+
+
+     }else {
+          $(content).hide();
+     }
+
+    $(saveChanges).on("click", function() {
+        getInfo();
+        let i;
+
+        // Получаем данные из localStorage
+        let storedUser = localStorage.getItem('userData');
+
+        if (storedUser) {
+            // Если данные есть, создаем объект user
+            user = JSON.parse(storedUser);
+
+            addScript();
+            // console.log(user);
+            $(content).show();
+            $(modal_setting).hide();
+        } else {
+            // Если данных нет, показываем модальное окно
+            $(modal_setting).show();
+        }
+    });
+}
+
+setData();
+
+function getInfo() {
+    let userData = {};
+
+    $('#myModal').find('input').each(function() {
+        var inputId = $(this).attr('id');
+        var inputValue = $(this).val().trim();
+        userData[inputId] = inputValue; // Сохраняем значения в объект
+    });
+
+    // Сохраняем объект userData в localStorage
+    localStorage.setItem('userData', JSON.stringify(userData));
+}

@@ -1,8 +1,5 @@
 /* globals SIP,user,moment, Stopwatch */
 
-
-
-
 var ctxSip;
 
 $(document).ready(function() {
@@ -11,6 +8,8 @@ $(document).ready(function() {
     if (typeof(user) === 'undefined') {
         user = JSON.parse(localStorage.getItem('SIPCreds'));
     }
+
+    console.log("user-", user);
 
     ctxSip = {
 
@@ -304,7 +303,7 @@ $(document).ready(function() {
 
             i  = '<div class="list-group-item sip-logitem foo clearfix '+callClass+'" data-uri="'+item.uri+'" data-sessionid="'+item.id+'" title="Double Click to Call">';
             i += '<div class="clearfix"><div class="pull-left">';
-            i += '</i> <p class="number-phone">'+ctxSip.formatPhone(item.uri)+'</p><br><p class="time-call">'+moment(item.start).format('MM/DD hh:mm:ss a')+'</p>';
+            i += '<i class="fa fa-fw '+callIcon+' fa-fw"></i> <span class="number-phone">'+ctxSip.formatPhone(item.uri)+'</span><br><p class="time-call">'+moment(item.start).format('MM/DD hh:mm:ss a')+'</p>';
             i += '</div>';
             i += '<div class="pull-right text-right"><br>' + callLength+'</div></div>';
 
@@ -1091,6 +1090,31 @@ $(document).ready(function() {
    }
 
    copyTextBuffer();
+
+
+   function showStatusAccount() {
+
+       let obj = JSON.parse(localStorage.getItem('userData'));
+
+       for( let key in obj ) {
+
+            let i = `<p><span>${key}: </span><span>${obj[key]}</span></p>`;
+
+           $('.statusAccount').append( i )
+
+          console.log( obj[key] );
+
+       }
+
+       $(".sipStatus").on('click', function() {
+
+           $('.statusAccount').toggle();
+
+       });
+
+   }
+
+   showStatusAccount();
 
    //------------------------------------------------
 
