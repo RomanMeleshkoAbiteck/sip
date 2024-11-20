@@ -83,10 +83,10 @@
 /*----------- Styles for Modal Settings ----*/
 
 #myModal {
-  display: block;
+  display: contents;
   position: absolute;
   z-index: 1000;
-  width: inherit;
+  width: -webkit-fill-available;
 }
 
  @media (min-width: 768px) {
