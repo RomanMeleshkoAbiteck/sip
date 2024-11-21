@@ -1069,7 +1069,7 @@ $(document).ready(function() {
 
                                 setTimeout(function(){
 
-                                    $('.modal-buffer').animate({top: '-40px'}, 500);
+                                    $('.modal-buffer').animate({top: '-60px'}, 500);
 
                                 }, 1000);
                             });
