@@ -19,37 +19,40 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-<!--                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-                    <h4 class="modal-title" id="myModalLabel">SIP аккаунт</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">
+                        <img src="/img/user.png" width="32px" height="32px" alt="logo"/>
+                        <span style="margin-left: 10px">Аккаунт</span>
+                    </h5>
                 </div>
                 <div class="modal-body">
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="User" class="col-sm-3 control-label">Логин</label>
+                            <label for="User" class="col-sm-3 control-label">Логин*</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="User" placeholder="Логин">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Pass" class="col-sm-3 control-label">Пароль</label>
+                            <label for="Pass" class="col-sm-3 control-label">Пароль*</label>
                             <div class="col-sm-9">
                                 <input type="password" class="form-control" id="Pass" placeholder="Пароль">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Realm" class="col-sm-3 control-label">Область аутентификации</label>
+                            <label for="Realm" class="col-sm-3 control-label">Область аутентификации*</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="Realm" placeholder="Область аутентификации">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Display" class="col-sm-3 control-label">Отображаемое имя</label>
+                            <label for="Display" class="col-sm-3 control-label">Отображаемое имя*</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="Display" placeholder="Отображаемое имя">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="WSServer" class="col-sm-3 control-label">WebSocket URL</label>
+                            <label for="WSServer" class="col-sm-3 control-label">WebSocket URL*</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="WSServer" placeholder="WebSocket URL">
                             </div>
@@ -73,20 +76,11 @@
             <div id="txtRegStatus"></div>
 
            <div class="statusAccount">
-               <h5>SIP аккаунт</h5>
-               <div class="status_name">
-
+               <div class="status_header">
+                   <h5>SIP аккаунт</h5>
+                   <span class="show_modal_setting"><i class="fa-solid fa-sliders"></i></span>
                </div>
-               <div class="status_password">
-
-               </div>
-               <div class="status_realm">
-
-               </div>
-               <div class="status_display">
-
-               </div>
-               <div class="status_wsserver">
+               <div class="showStatus">
 
                </div>
            </div>

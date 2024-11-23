@@ -1008,6 +1008,8 @@ $(document).ready(function() {
 
        contacts.forEach(contact => {
 
+           contact.phone = formatPhoneNumber( contact.phone );
+
            i =  '<div class="contact_wrapper">'
            i += '<i class="fa fa-trash text-muted deleteContact" title="Delete"></i>'
            i += '<div class="contact_name">'
@@ -1026,6 +1028,23 @@ $(document).ready(function() {
    }
 
    displayContacts();
+
+   function formatPhoneNumber( phone ) {
+
+       let cleaned = phone.replace(/\D/g, '');
+
+       if( cleaned.length > 6 ) {
+
+           var formatted = '(' + cleaned.substring(0, 3) + ') ' +
+                        cleaned.substring(3, 6) + ' ' +
+                        cleaned.substring(6, 8) + ' ' +
+                        cleaned.substring(8, 10);
+           return formatted;
+
+       }else {
+          return phone;
+       }
+   }
 
    function deleteContact() {
 
@@ -1056,65 +1075,82 @@ $(document).ready(function() {
        const textElement = $(".contact_phone > span");
         let pressTimer;
 
-        $(textElement).on('mousedown', () => {
-            pressTimer = setTimeout(() => {
-                const selectedText = window.getSelection().toString();
-                if (selectedText) {
-                    navigator.clipboard.writeText(selectedText)
-                        .then(() => {
+       $(textElement).on('mousedown', () => {
+           pressTimer = setTimeout(() => {
+               const selectedText = window.getSelection().toString();
+               if (selectedText) {
+                   navigator.clipboard.writeText(selectedText)
+                       .then(() => {
 
-                            $('.modal-buffer').show(1000, function(){
+                           $('.modal-buffer').show(1000, function(){
 
                                $('.modal-buffer').animate({top: '10px'}, 500);
 
-                                setTimeout(function(){
+                               setTimeout(function(){
 
-                                    $('.modal-buffer').animate({top: '-60px'}, 500);
+                                   $('.modal-buffer').animate({top: '-60px'}, 500);
 
-                                }, 1000);
-                            });
+                               }, 1000);
+                           });
 
-                        })
-                        .catch(err => console.error('Ошибка копирования текста: ', err));
-                }
-            }, 500);
-        });
+                       })
+                       .catch(err => console.error('Ошибка копирования текста: ', err));
+               }
+           }, 500);
+       });
 
-        $(textElement).on('mouseup', () => {
-            clearTimeout(pressTimer);
-        });
+       $(textElement).on('mouseup', () => {
+           clearTimeout(pressTimer);
+       });
 
-        $(textElement).on('mouseleave', () => {
-            clearTimeout(pressTimer);
-        });
+       $(textElement).on('mouseleave', () => {
+           clearTimeout(pressTimer);
+       });
    }
 
    copyTextBuffer();
 
+   function showModalSetting() {
+       $('.show_modal_setting').on('click', function() {
+           $('.modal-setting').show();
+           $('.modal-setting .close').show();
 
-   function showStatusAccount() {
-
-       let obj = JSON.parse(localStorage.getItem('userData'));
-
-       for( let key in obj ) {
-
-            let i = `<p><span>${key}: </span><span>${obj[key]}</span></p>`;
-
-           $('.statusAccount').append( i )
-
-          console.log( obj[key] );
-
-       }
-
-       $(".sipStatus").on('click', function() {
-
-           $('.statusAccount').toggle();
+           $('.modal-setting .close').on("click", function() {
+              $('.modal-setting').hide();
+           });
 
        });
-
    }
 
-   showStatusAccount();
+   showModalSetting();
+
+
+   // function validateModalSetting() {
+   //    $('.saveChanges').click(function(event) {
+   //      var isValid = true;
+   //
+   //      // Проходим по каждому полю input внутри формы
+   //      $('.modal-body input').each(function() {
+   //          if ($(this).val().trim() === '') {
+   //              isValid = false;
+   //              $(this).addClass('is-invalid'); // Добавляем класс для стилизации ошибки
+   //          } else {
+   //              $(this).removeClass('is-invalid');
+   //          }
+   //      });
+   //
+   //      // Если есть пустые поля, предотвращаем отправку формы
+   //      if (!isValid) {
+   //          event.preventDefault();
+   //          alert('Пожалуйста, заполните все поля.');
+   //      } else {
+   //          // Логика для отправки данных
+   //          console.log('Форма валидна и может быть отправлена.');
+   //      }
+   //  });
+   // }
+
+   // validateModalSetting();
 
    //------------------------------------------------
 

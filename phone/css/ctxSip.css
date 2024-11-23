@@ -83,10 +83,31 @@
 /*----------- Styles for Modal Settings ----*/
 
 #myModal {
-  display: contents;
   position: absolute;
+  right: 0px;
   z-index: 1000;
   width: -webkit-fill-available;
+}
+
+#myModal .close {
+  display: none;
+}
+
+#myModal .form-control {
+  padding: 20px;
+  border-style: none;
+  box-shadow: none;
+  background: bisque;
+  border-radius: 20px;
+}
+
+#myModal .form-control:focus {
+  background: #cfe5ee;
+}
+
+.is-invalid::placeholder {
+  color: red;
+  /*border: 1px solid red !important;*/
 }
 
  @media (min-width: 768px) {
@@ -117,6 +138,15 @@
   cursor: pointer;
   display: none;
   border-radius: 10px;
+}
+
+.statusAccount .status_header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: inherit;
+}
+.status_header span {
+  padding: 8px;
 }
 
 
