@@ -149,6 +149,17 @@
   padding: 8px;
 }
 
+.statusAccount .reset_status {
+  text-align: end;
+}
+
+.statusAccount .reset_status > button {
+  border: none;
+  padding: 7px;
+  border-radius: 10px;
+  background: #e63946;
+  color: #ffffff;
+}
 
 /* ---------Styles for call_page--------- */
 #numDisplay {

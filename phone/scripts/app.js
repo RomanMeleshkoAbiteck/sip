@@ -1124,33 +1124,16 @@ $(document).ready(function() {
 
    showModalSetting();
 
+   function deleteAccount() {
 
-   // function validateModalSetting() {
-   //    $('.saveChanges').click(function(event) {
-   //      var isValid = true;
-   //
-   //      // Проходим по каждому полю input внутри формы
-   //      $('.modal-body input').each(function() {
-   //          if ($(this).val().trim() === '') {
-   //              isValid = false;
-   //              $(this).addClass('is-invalid'); // Добавляем класс для стилизации ошибки
-   //          } else {
-   //              $(this).removeClass('is-invalid');
-   //          }
-   //      });
-   //
-   //      // Если есть пустые поля, предотвращаем отправку формы
-   //      if (!isValid) {
-   //          event.preventDefault();
-   //          alert('Пожалуйста, заполните все поля.');
-   //      } else {
-   //          // Логика для отправки данных
-   //          console.log('Форма валидна и может быть отправлена.');
-   //      }
-   //  });
-   // }
+       $(".statusAccount .reset_status > button").on("click", function() {
+           localStorage.removeItem('userData');
+            location.reload();
+       });
 
-   // validateModalSetting();
+   }
+
+   deleteAccount();
 
    //------------------------------------------------
 

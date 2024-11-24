@@ -33,7 +33,7 @@ var user;
 
   }
 
-   // statusAccount();
+   statusAccount();
 
    function showStatus() {
        $(".sipStatus").on('click', function () {
